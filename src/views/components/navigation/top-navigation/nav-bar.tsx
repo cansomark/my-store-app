@@ -12,8 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import StoreIcon from '../../../../assets/icon/storeIcon.png';
-import { NavMainIcon } from './nav-bar-style';
+import AccentureIcon from "../../../../assets/icon/Accenture-Logo-white@2x.png"
+import { NavMainIcon, NavTitleContainer } from './nav-bar-style';
 
 const pages = [""];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -40,26 +40,29 @@ function NavBar() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-             
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-           ATCP Service Desk Solutions
-          </Typography>
-
+        <Toolbar disableGutters>    
+          <NavTitleContainer>
+            <NavMainIcon>
+              <img src={AccentureIcon} alt='accenture' />
+            </NavMainIcon>  
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+              
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+            | ATCP Service Desk Solutions
+            </Typography>
+          </NavTitleContainer>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"

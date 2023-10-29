@@ -1,31 +1,51 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { TextField } from "@mui/material";
 import { CallOriginField } from '../../../../../utils/form-utils';
 import { FormFieldWrapper, TWO_COL_LAYOUT } from '../../../shared/shared-style';
 import { TotalOriginContainer } from './call-origin.style';
-const CallOrigin:React.FC=()=>{
-    const [inputValue, setInputValue]=useState<number[]>([]);
+
+interface Props {
+    onClear: boolean;
+    formClear:()=>void;
+}
+
+const CallOrigin:React.FC<Props>=({onClear,formClear})=>{
+    const [inputValue, setInputValue]=useState<string[]>([]);
+
+    useEffect(()=>{        
+        if(onClear) {
+            setInputValue([]);         
+            formClear();
+        }
+    },[onClear,formClear])
 
     const handleOnChange=(value:string, index:number)=>{
         const newValue=[...inputValue];
-        newValue[index]=parseFloat(value) || 0;
+        newValue[index]=value;
         setInputValue(newValue);
     }
 
-    const handlerOnBlue=(event:React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>, index:number) => {
-        const newValue=event.target.value;
-        if(!newValue.endsWith('%') && newValue)
+    const handlerOnBlue=(index:number) => {
+        const newValue=inputValue[index];
+        if(newValue)
         {
-            event.target.value = `${newValue}%`
+            if(!newValue.toString().endsWith('%'))
+            {
+                const updatedValue = `${newValue}%`
+                handleOnChange(updatedValue,index)
+            }
         }
     }
 
-    const handleOnFocus=(event:React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) =>{
-        const value=event.target.value;
-        event.target.value=value.replace('%','');
+    const handleOnFocus=(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>, index:number) =>{       
+        const value=inputValue[index];
+        if(value)
+        {
+            handleOnChange(value.replace('%',''),index)
+        }
     }
 
-    const total=inputValue.reduce((acc,cur)=> acc + cur,0);
+    const total=inputValue.reduce((acc,cur)=> acc + parseFloat(cur),0);
     return(
         <FormFieldWrapper>
             <TWO_COL_LAYOUT>
@@ -34,10 +54,11 @@ const CallOrigin:React.FC=()=>{
                     <TextField
                         key={index}
                         id="outlined-required"
-                        label={label}  
+                        value={inputValue[index] || ''} 
+                        label={label}                         
                         onChange={(e)=>handleOnChange(e.target.value,index)}   
-                        onBlur={(e)=>handlerOnBlue(e,index)} 
-                        onFocus={handleOnFocus}                                             
+                        onBlur={()=>handlerOnBlue(index)} 
+                        onFocus={(e)=>handleOnFocus(e,index)}                                             
                     />
                 ))
             }

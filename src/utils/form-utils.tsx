@@ -5,6 +5,19 @@ export const CONTACT_LABELS = [
     "Contact from Chat"
 ];
 
+export const MONTH_TEXT_LABELS=[
+    "Number of Users",
+    "Contracts Per Month Per Users",
+    "Contracts Per Months"
+]
+
+export const TOOL_COST_LABELS=[
+    "SLA",
+    "My Wizard",
+    "Service Now",
+    "Other"
+]
+
 export const DELIVERY_APPROACH = [
     "Dedicated",
     "Shared"
@@ -43,6 +56,7 @@ export const Language =[
     "Cantonese",
     "Spanish",
     "Portugueses",
+    "English",
     "Dutch",
     "Russian",
     "French",

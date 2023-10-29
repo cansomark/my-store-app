@@ -3,14 +3,37 @@ import { Flex, FormFieldWrapper, THREE_COL_LAYOUT, TwoRowContainer } from "../..
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { MonthlyTableContainer } from "./monthly-table-style";
 import DataTable from "../../../common/table";
 import monthlyData from "../../../../../sample-data/monthly-data";
-import { MonthList } from "../../../../../utils/form-utils";
-const MonthlyForm:React.FC=()=>{
+import { MONTH_TEXT_LABELS, MonthList } from "../../../../../utils/form-utils";
+
+interface Props {
+    onClear: boolean;
+    formClear: ()=>void;
+}
+
+const MonthlyForm:React.FC<Props>=({onClear,formClear})=>{
     const [showTableContainer, setShowTableContainer]=useState(false)
     const [showTable, setShowTable]=useState(false);
+    const [monthList,setMonthList]=useState<string | null>(null)
+    const [inputValue,setInputValue]=useState<number[]>([]);
+    useEffect(()=>{
+        if(onClear) {
+            setMonthList(null);
+            setInputValue([]);
+            setShowTable(false);
+            setShowTableContainer(false);
+        }
+        formClear()
+    },[onClear,formClear])
+
+    const handleOnChange=(value:string,index:number)=>{
+        const newValue=[...inputValue];
+        newValue[index]=parseFloat(value) || 0;
+        setInputValue(newValue)
+    }
 
     const handleOnAddClick=()=>{
         setShowTableContainer(true)
@@ -20,35 +43,36 @@ const MonthlyForm:React.FC=()=>{
     const handleShowTable=()=>{
         setShowTable(prevShowTable=>!prevShowTable)
     }
+
+
     return(
         <FormFieldWrapper>
             <THREE_COL_LAYOUT>
                 <Autocomplete
                     disablePortal
                     id="combo-box-demo"
+                    value={monthList}
+                    onChange={(event:any,newValue:string | null)=>{
+                        setMonthList(newValue)
+                    }}
                     options={MonthList}
                     renderInput={(params) => <TextField {...params} label="Month" />}
                     className="three-col-span month-dropdown"
                 />
 
                 <>
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Number of Users"                                 
-                    />
-
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Contracts Per Month Per Users"             
-                    />
-
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Contracts Per Month"             
-                    />
+                {
+                    MONTH_TEXT_LABELS.map((field,index)=>(
+                        <TextField
+                            key={index}
+                            required
+                            value={inputValue[index] || ''}
+                            onChange={(e)=>handleOnChange(e.target.value,index)}
+                            id="outlined-required"
+                            label={field}                                 
+                        />
+                    ))
+                }
                 </>
             </THREE_COL_LAYOUT>
             <Flex>

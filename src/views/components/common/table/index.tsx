@@ -20,9 +20,9 @@ const DataTable:React.FC<Props>=({headers,rows})=>{
         <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
-                    <TableRow>
-                        {headers.map((header) => (
-                            <TableCell align="center" key={header.propName}>
+                    <TableRow className='table-header'>
+                        {headers.map((header,index) => (
+                           <TableCell align="center" className={`${index===0 ? "hidden" : ""}`} key={header.propName}>
                                 {header.displayName}
                             </TableCell>
                         ))}
@@ -30,7 +30,7 @@ const DataTable:React.FC<Props>=({headers,rows})=>{
                     </TableHead>
                     <TableBody>
                         {rows.map((row, rowIndex) => (
-                            <TableRow key={rowIndex}>
+                            <TableRow key={rowIndex} className='table-data'>
                                 {headers.map((header) => (
                                     <TableCell key={header.propName}>
                                         {row[header.propName]}

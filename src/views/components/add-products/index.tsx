@@ -12,8 +12,17 @@ import CallOrigin from "./form/call-origin";
 import pyramidData from "../../../sample-data/pyramid-data";
 const AddComponent:React.FC=()=>{
     const [open, setOpen] = useState(false)
+    const [clearField,setClearField]=useState(false);
     function handleGenerateButton(){
         setOpen(prevOpen => !prevOpen)
+    }
+
+    const handleOnClear=()=>{
+        setClearField(true);
+    }
+
+    const handleFormClear=()=>{
+        setClearField(false);
     }
 
     return(
@@ -25,14 +34,14 @@ const AddComponent:React.FC=()=>{
                 </InstructionText>
             </FormHeader>            
             <FormFieldContainer>
-                <DetailsForm />  
-                <CallOrigin />
-                <MonthlyForm />
-                <ContactChannel />
-                <ToolCost />
+                <DetailsForm onClear={clearField} formClear={handleFormClear} />
+                <CallOrigin onClear={clearField} formClear={handleFormClear} />
+                <MonthlyForm onClear={clearField} formClear={handleFormClear} />
+                <ContactChannel onClear={clearField} formClear={handleFormClear} />
+                <ToolCost onClear={clearField} formClear={handleFormClear} />
             </FormFieldContainer>
             <TwoRowContainer>
-                <Button variant="outlined" startIcon={<Clear />}>
+                <Button variant="outlined" onClick={handleOnClear} startIcon={<Clear />}>
                     Clear
                 </Button>
                 <Button variant="contained" onClick={handleGenerateButton} startIcon={<SaveAs />}>

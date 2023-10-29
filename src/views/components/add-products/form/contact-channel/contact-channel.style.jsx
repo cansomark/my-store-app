@@ -11,5 +11,8 @@ export const ContactsSummary=styled.div `
     font-weight: bold;    
     .data-label {
         color: #006400;
+    };
+    .data-label.has-error {
+        color:  #FF5733 
     }
 `
