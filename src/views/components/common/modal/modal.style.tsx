@@ -5,7 +5,7 @@ position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-width: 660px;
+width: 60%;
 min-height: 340px;
 background-color: #fff;
 border-radius: 6px;
@@ -21,9 +21,11 @@ align-items: center;
   .table-header th {
     font-weight: 600;
     color: #fff;
+    text-align: left;
   }
   .table-data td {
     font-size: 0.795rem;
+    text-align: left;
   }
   .table-data:nth-child(2n) {
     background-color: #f8f6ff;

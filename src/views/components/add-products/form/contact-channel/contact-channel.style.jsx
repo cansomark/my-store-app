@@ -4,7 +4,8 @@ export const ContactsSummary=styled.div `
     display: grid;
     grid-template-columns: repeat(1,auto);
     margin: 0 auto;    
-    width: 60%;
+    width: auto;
+    max-width: max-content;
     gap: 20px;
     font-size: 14px;
     font-weight: bold;    
