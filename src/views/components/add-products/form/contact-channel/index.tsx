@@ -1,9 +1,10 @@
 import { TextField } from "@mui/material";
-import { FormFieldWrapper, MiniBoxShadow, TWO_COL_LAYOUT, TWO_NARROW_COL_LAYOUT } from "../../../shared/shared-style";
+import { FLEX_COLUMN_LAYOUT, Flex, FormFieldWrapper, MiniBoxShadow, TWO_COL_LAYOUT, TWO_NARROW_COL_LAYOUT } from "../../../shared/shared-style";
 import React,{useState,useEffect} from "react";
 import { ContactsSummary } from "./contact-channel.style";
 import { CONTACT_LABELS } from "../../../../../utils/form-utils";
-
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 interface Props {
     onClear:boolean;
     formClear:()=>void;
@@ -95,10 +96,20 @@ const ContactChannel:React.FC<Props>=({onClear,formClear})=>{
                 </TWO_COL_LAYOUT>
                 <MiniBoxShadow>
                     <ContactsSummary>
-                        <span className="summary-label">Total Contact:</span>
-                        <span className={`data-label`}>{totalContacts}%</span>
-                        <span className="summary-label">Average Talk Time:</span>
-                        <span className="data-label">{parseFloat(talkTimeLabel) || 0} Min</span>
+                        <FLEX_COLUMN_LAYOUT>                       
+                            <Flex>
+                                <ConnectWithoutContactIcon className="icon-text-mr medium-blue-text"/>
+                                <span className="summary-label medium-blue-text">Total Contact</span>
+                            </Flex>
+                            <span className={`data-label`}>{totalContacts}%</span>                           
+                        </FLEX_COLUMN_LAYOUT>  
+                        <FLEX_COLUMN_LAYOUT>
+                            <Flex>
+                                <PermPhoneMsgIcon className="small-icon-width icon-text-mr medium-blue-text"/>
+                                <span className="summary-label medium-blue-text">Average Talk Time</span>
+                            </Flex>                            
+                            <span className="data-label">{parseFloat(talkTimeLabel) || 0} Min</span>
+                        </FLEX_COLUMN_LAYOUT>  
                     </ContactsSummary>
                 </MiniBoxShadow>
             </TWO_NARROW_COL_LAYOUT>

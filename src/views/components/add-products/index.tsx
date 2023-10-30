@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { FormContainer, FormFieldContainer, FormHeader, FormTiTle, InstructionText, TwoRowContainer } from "../shared/shared-style";
 import { Button } from "@mui/material";
 import Clear from '@mui/icons-material/Clear';
-import SaveAs from '@mui/icons-material/SaveAs';
+import ModelTrainingIcon from '@mui/icons-material/ModelTraining';
 import DetailsForm from "./form/details-form";
 import MonthlyForm from "./form/monthly-form";
 import ContactChannel from "./form/contact-channel";
@@ -28,9 +28,9 @@ const AddComponent:React.FC=()=>{
     return(
        <FormContainer>
             <FormHeader>
-                <FormTiTle>Title</FormTiTle>
+                <FormTiTle>Pyramid Generator for Delivery Run Phase</FormTiTle>
                 <InstructionText>
-                    Short Description
+                    Cost Considertion, Volumetrics and Other Parameters
                 </InstructionText>
             </FormHeader>            
             <FormFieldContainer>
@@ -44,8 +44,8 @@ const AddComponent:React.FC=()=>{
                 <Button variant="outlined" onClick={handleOnClear} startIcon={<Clear />}>
                     Clear
                 </Button>
-                <Button variant="contained" onClick={handleGenerateButton} startIcon={<SaveAs />}>
-                    Generate Pyramid Model
+                <Button variant="contained" onClick={handleGenerateButton} startIcon={<ModelTrainingIcon />}>
+                    Generate
                 </Button>
             </TwoRowContainer>
             <ModalComponent open={open} handleClose={handleGenerateButton} 

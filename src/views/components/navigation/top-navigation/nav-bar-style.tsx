@@ -14,3 +14,9 @@ export const NavMainIcon=styled.div `
     margin-right: 10px;
    }
 `
+
+export const AvatarContainer=styled.div `
+   .avatar-background{
+      background-image: linear-gradient(to bottom, #6087f5 0%, #abfbd7 100%);
+   }
+`

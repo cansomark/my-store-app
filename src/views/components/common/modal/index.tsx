@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { ModalBodyContainer } from "./modal.style";
+import { LoadingContainer, ModalBodyContainer } from "./modal.style";
 import DataTable from "../table";
 
 interface Header {
@@ -23,7 +23,20 @@ interface Props {
 }
 
 const ModalComponent:React.FC<Props>=({open, handleClose, headers, rows})=>{
-   
+    const [showTable, setShowTable] = useState(false);
+
+    useEffect(() => {
+        if (open) {
+            setShowTable(false);
+            const timer = setTimeout(() => {
+                setShowTable(true);
+            }, 4000);
+            return () => {
+                clearTimeout(timer);
+            };
+        }
+    }, [open]);
+
     return(
         <>
         <Modal
@@ -33,7 +46,15 @@ const ModalComponent:React.FC<Props>=({open, handleClose, headers, rows})=>{
             aria-describedby="modal-modal-description"
         >
             <ModalBodyContainer>
-               <DataTable headers={headers} rows={rows}/>
+                {
+                    showTable ?
+                        <DataTable headers={headers} rows={rows}/>
+                    :                    
+                    <LoadingContainer>
+                        <span className="loader"></span>
+                        <span className="loader-label">Please Wait...</span>
+                    </LoadingContainer>
+                }   
             </ModalBodyContainer>
            
         </Modal>

@@ -47,7 +47,7 @@ const CallOrigin:React.FC<Props>=({onClear,formClear})=>{
 
     const total=inputValue.reduce((acc,cur)=> acc + parseFloat(cur),0);
     return(
-        <FormFieldWrapper>
+        <FormFieldWrapper>           
             <TWO_COL_LAYOUT>
             {
                 CallOriginField.map((label,index)=>(

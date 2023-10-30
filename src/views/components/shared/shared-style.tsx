@@ -15,14 +15,14 @@ export const FormContainer= styled.div `
   max-width: 960px;
   box-sizing: border-box;
   padding: 25px;
-  //max-height: 370px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 50px;  
 `
 
 export const FormTiTle = styled.h1 `
-  font-size: 16px;
+  font-size: 18px;
   line-height: 0.24;
+  color: #1976d2;
 `
 
 export const TwoRowContainer = styled.div `
@@ -38,7 +38,7 @@ export const TwoRowContainer = styled.div `
 
 export const InstructionText = styled.span `
   color: #223354;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.57;
   opacity: 0.7;
@@ -100,3 +100,10 @@ export const TWO_NARROW_COL_LAYOUT = styled.div `
   grid-template-columns: 2fr 1fr;
   gap: 10px;
 `
+
+export const FLEX_COLUMN_LAYOUT = styled.div `
+  display: flex;
+  flex-direction: column;
+`
+
+export const SMALL_WIDTH = styled

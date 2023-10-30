@@ -11,9 +11,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import AccentureIcon from "../../../../assets/icon/Accenture-Logo-white@2x.png"
-import { NavMainIcon, NavTitleContainer } from './nav-bar-style';
+import { AvatarContainer, NavMainIcon, NavTitleContainer } from './nav-bar-style';
 
 const pages = [""];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -60,7 +59,7 @@ function NavBar() {
                 textDecoration: 'none',
               }}
             >
-            | ATCP Service Desk Solutions
+            | ATCP SD Solution Tablet - Pyramid Generator
             </Typography>
           </NavTitleContainer>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -116,7 +115,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            ATCP Service Desk Solutions
+          
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -133,7 +132,9 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar>MC</Avatar>
+              <AvatarContainer>
+                 <Avatar className='avatar-background'>MC</Avatar>
+              </AvatarContainer>              
               </IconButton>
             </Tooltip>
             <Menu
