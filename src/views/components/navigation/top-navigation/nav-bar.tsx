@@ -38,7 +38,7 @@ function NavBar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container className='reset-max-w'>
         <Toolbar disableGutters>    
           <NavTitleContainer>
             <NavMainIcon>

@@ -12,7 +12,7 @@ export const FormContainer= styled.div `
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  max-width: 960px;
+  max-width: 60%;
   box-sizing: border-box;
   padding: 25px;
   margin: 0 auto;

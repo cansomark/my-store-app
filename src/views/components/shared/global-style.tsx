@@ -5,7 +5,7 @@ export const GlobalStyle=createGlobalStyle `
         font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
         margin: 0;
         .small-icon-width{
-            width:1rem;
+            width:1.09rem;
         }
         .icon-text-mr {
             margin-right: 5px;
@@ -16,5 +16,8 @@ export const GlobalStyle=createGlobalStyle `
         .text-align-center {
             text-align: center;
         } 
+        .reset-max-w {
+            max-width: unset;
+        }
     }    
 `
