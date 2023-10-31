@@ -1,4 +1,18 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle,css } from "styled-components";
+
+const generateColumnStyles=(index:number)=>{
+    let styles='';
+    for(let i=1;i<=index;i++) {
+        styles += `
+            .column-hover-${i} .column-${i} {
+                background-color:#bccaf4;
+                color:#006400;
+                font-weight:600;
+            }  
+        `
+    }
+    return css `${styles}`
+}
 
 export const GlobalStyle=createGlobalStyle `
     body {
@@ -19,5 +33,9 @@ export const GlobalStyle=createGlobalStyle `
         .reset-max-w {
             max-width: unset;
         }
+        .cursor-pointer {
+            cursor: pointer;
+        }      
+        ${generateColumnStyles(9)}
     }    
 `

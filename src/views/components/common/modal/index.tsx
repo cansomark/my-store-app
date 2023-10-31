@@ -48,7 +48,7 @@ const ModalComponent:React.FC<Props>=({open, handleClose, headers, rows})=>{
             <ModalBodyContainer>
                 {
                     showTable ?
-                        <DataTable headers={headers} rows={rows}/>
+                        <DataTable headers={headers} rows={rows} enableRowClick={false} />
                     :                    
                     <LoadingContainer>
                         <span className="loader"></span>

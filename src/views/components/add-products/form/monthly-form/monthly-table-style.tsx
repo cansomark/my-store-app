@@ -27,6 +27,7 @@ export const MonthlyTableContainer = styled.div `
   }
   .table-data td {
     font-size: 0.795rem;
+    color: #000000DE;
   }
   .table-data:nth-child(2n) {
     background-color: #f8f6ff;

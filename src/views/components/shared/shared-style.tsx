@@ -15,8 +15,7 @@ export const FormContainer= styled.div `
   max-width: 60%;
   box-sizing: border-box;
   padding: 25px;
-  margin: 0 auto;
-  margin-top: 50px;  
+  margin: 50px auto; 
 `
 
 export const FormTiTle = styled.h1 `
@@ -79,7 +78,7 @@ export const Flex = styled.div `
 export const THREE_COL_LAYOUT = styled.div `
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 17px;
   
   .three-col-span {
     grid-column: span 3;
@@ -92,18 +91,16 @@ export const THREE_COL_LAYOUT = styled.div `
 export const TWO_COL_LAYOUT = styled.div `
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 17px;
 `
 
 export const TWO_NARROW_COL_LAYOUT = styled.div `
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 10px;
+  gap: 17px;
 `
 
 export const FLEX_COLUMN_LAYOUT = styled.div `
   display: flex;
   flex-direction: column;
 `
-
-export const SMALL_WIDTH = styled
