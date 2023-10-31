@@ -32,7 +32,9 @@ const DataTable:React.FC<Props>=({headers,rows})=>{
                         {rows.map((row, rowIndex) => (
                             <TableRow key={rowIndex} className='table-data'>
                                 {headers.map((header) => (
-                                    <TableCell key={header.propName}>
+                                    <TableCell key={header.propName}
+                                      align={row[header.propName][0] === '$' ? 'right' : 'left'}
+                                    >
                                         {row[header.propName]}
                                     </TableCell>
                                 ))}
