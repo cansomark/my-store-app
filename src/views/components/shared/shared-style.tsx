@@ -11,17 +11,24 @@ export const FormContainer= styled.div `
   position: relative;
   overflow-y: auto;
   display: flex;
-  flex-direction: column;
-  max-width: 60%;
+  flex-direction: column; 
   box-sizing: border-box;
   padding: 25px;
   margin: 50px auto; 
+
+  width: 60%;
+  @media only screen and (max-width: 1020px) {
+    width: 80%;
+  }
 `
 
 export const FormTiTle = styled.h1 `
-  font-size: 18px;
-  line-height: 0.24;
+  font-size: clamp(16px, 1vw + 1vh, 18px);
+  line-height: 1.2;
   color: #1976d2;
+  @media only screen and (min-width: 1020px) {
+    line-height: 1.24;
+  } 
 `
 
 export const TwoRowContainer = styled.div `
@@ -29,15 +36,20 @@ export const TwoRowContainer = styled.div `
   flex-direction: row;
   gap: 15px;
   margin-left: auto;
-  margin-top: 10px;
+    margin-top: 10px;  
+    margin-right: 0;
   Button {
     min-width: 115px
+  }
+
+  @media only screen and (max-width: 1020px) {
+    margin: 10px auto;
   }
 `
 
 export const InstructionText = styled.span `
   color: #223354;
-  font-size: 14px;
+  font-size: clamp(12px,1vw + 1vh, 14px);
   font-weight: 400;
   line-height: 1.57;
   opacity: 0.7;
@@ -76,28 +88,34 @@ export const Flex = styled.div `
   display: flex;
 `
 export const THREE_COL_LAYOUT = styled.div `
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: grid;  
   gap: 17px;
-  
-  .three-col-span {
-    grid-column: span 3;
-  }
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
 
-  .month-dropdown {
-    width: 33%
+    .three-col-span {
+      grid-column: span 3;
+    }
+
+    .month-dropdown {
+      width: 33%
+    }
   }
 `
 export const TWO_COL_LAYOUT = styled.div `
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 17px;
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  } 
 `
 
 export const TWO_NARROW_COL_LAYOUT = styled.div `
   display: grid;
-  grid-template-columns: 2fr 1fr;
   gap: 17px;
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: 2fr 1fr;
+  } 
 `
 
 export const FLEX_COLUMN_LAYOUT = styled.div `

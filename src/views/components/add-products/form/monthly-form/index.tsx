@@ -28,7 +28,7 @@ type Data = {
     "Month 8": string;
     "Month 9": string;
     Average: string;
-    [key: string]: string;  // This is the index signature
+    [key: string]: string;
   };
 
 const MonthlyForm:React.FC<Props>=({onClear,formClear})=>{
@@ -40,7 +40,23 @@ const MonthlyForm:React.FC<Props>=({onClear,formClear})=>{
     const [localDataList, setLocalDataList] = useState(monthlyData[0]);
     useEffect(()=>{
         if(onClear) {
-            clearField()
+            clearField();
+            const updatedDataList: Data[] = [...localDataList.data];
+
+            updatedDataList.forEach((data) => {
+                for (let i = 1; i <= MonthList.length; i++) {
+                    data[`Month ${i}`] = "";
+                }
+                data['Average'] = "";
+            });
+
+            const newLocalDataList = {
+                headers: localDataList.headers,
+                data: updatedDataList,
+            };
+
+            setLocalDataList(newLocalDataList);
+
         }
         formClear()
     },[onClear,formClear])
@@ -50,15 +66,17 @@ const MonthlyForm:React.FC<Props>=({onClear,formClear})=>{
         setInputValue([]);
         setShowTable(false);
         setShowTableContainer(false);   
-        setEnableupdate(false)     
+        setEnableupdate(false) 
+       
     }
 
-    const handleOnUpdateClick = () => {
+    const handleOnSaveClick = () => {
         if (monthList !== null) {
             const updatedDataList: Data[] = [...localDataList.data];
     
             updatedDataList.forEach((data, index) => {
-                data[monthList] = `$${inputValue[index].toLocaleString()}`;
+                const value = inputValue[index] || 0;
+                data[monthList] = `$${value.toLocaleString()}`;
             });
     
             updateAverages(updatedDataList);
@@ -74,8 +92,11 @@ const MonthlyForm:React.FC<Props>=({onClear,formClear})=>{
         dataList.forEach((data) => {
             const total = Object.keys(data)
                 .filter((key) => key.startsWith("Month"))
-                .reduce((acc, key) => acc + parseFloat(data[key].replace(/[$,]/g, "")), 0);           
-            const average = (total / MonthList.length).toFixed(2);
+                .reduce((acc, key) => {
+                    const value = data[key].replace(/[$,]/g, "") || "0";
+                    return acc + parseFloat(value);
+                }, 0);
+            const average = (total / 9).toFixed(2);
             data.Average = `$${parseFloat(average).toLocaleString()}`;
         });
     };
@@ -87,12 +108,10 @@ const MonthlyForm:React.FC<Props>=({onClear,formClear})=>{
     }
 
     const handleOnAddClick=()=>{
-        if(enableUpdate) {
-            handleOnUpdateClick()
-        }
+        handleOnSaveClick()
         clearField()
         setShowTableContainer(true)
-        setShowTable(true)            
+        setShowTable(true)       
     }
 
     const handleCancel=()=>{
@@ -160,7 +179,7 @@ const MonthlyForm:React.FC<Props>=({onClear,formClear})=>{
                             Cancel
                         </Button>
                     }
-                    <Button variant="contained" onClick={handleOnAddClick} startIcon={enableUpdate ? <UpdateIcon /> : <AddCircleOutlineIcon />}>
+                    <Button variant="contained" disabled={monthList ? false : true} onClick={handleOnAddClick} startIcon={enableUpdate ? <UpdateIcon /> : <AddCircleOutlineIcon />}>
                         {
                             enableUpdate ?
                                 "Update"

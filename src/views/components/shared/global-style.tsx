@@ -36,6 +36,9 @@ export const GlobalStyle=createGlobalStyle `
         .cursor-pointer {
             cursor: pointer;
         }      
+        .css-2uchni {
+            margin-left: auto;
+         }
         ${generateColumnStyles(9)}
     }    
 `
