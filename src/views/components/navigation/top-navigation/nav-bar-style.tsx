@@ -5,7 +5,7 @@ export const NavTitleContainer=styled.div `
    justify-content: center;
    align-content: center;
    align-items: baseline;
-   flex-direction: row;
+   flex-direction: row;  
 `
 
 export const NavMainIcon=styled.div `

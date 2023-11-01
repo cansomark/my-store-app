@@ -39,6 +39,12 @@ export const GlobalStyle=createGlobalStyle `
         .css-2uchni {
             margin-left: auto;
          }
+         @media only screen and (max-width:768px) {
+            .css-1oqqzyl-MuiContainer-root {
+               padding-left: 10px;
+               padding-right: 10px;
+            }
+         }
         ${generateColumnStyles(9)}
     }    
 `
