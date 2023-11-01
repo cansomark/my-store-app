@@ -13,6 +13,11 @@ export const NavMainIcon=styled.div `
     width: 100px;
     margin-right: 10px;
    }
+   @media only screen and (max-width:768px) {
+      img {
+         width: 85px;
+      }
+   }
 `
 
 export const AvatarContainer=styled.div `
