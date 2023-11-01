@@ -71,12 +71,12 @@ function NavBar() {
                 display: { xs: 'flex', md: 'none' },
                 fontFamily: 'monospace',
                 fontWeight: 700,
-              
+                fontSize: '1.15rem',
                 color: 'inherit',
                 textDecoration: 'none',
               }}
             >
-            | ATCP SD Solution Tablet
+            | ATCP SD Solution
             </Typography>
           </NavTitleContainer>          
           
