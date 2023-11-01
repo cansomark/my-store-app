@@ -44,6 +44,13 @@ export const TwoRowContainer = styled.div `
 
   @media only screen and (max-width: 1020px) {
     margin: 10px auto;
+    Button {
+      min-width: unset;
+      width: 109px;
+    }
+    .sx-icon-mr span {
+      margin-right: 2px;
+    }
   }
 `
 

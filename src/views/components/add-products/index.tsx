@@ -44,7 +44,7 @@ const AddComponent:React.FC=()=>{
                 <Button variant="outlined" onClick={handleOnClear} startIcon={<Clear />}>
                     Clear
                 </Button>
-                <Button variant="contained" onClick={handleGenerateButton} startIcon={<ModelTrainingIcon />}>
+                <Button variant="contained" onClick={handleGenerateButton} className="sx-icon-mr" startIcon={<ModelTrainingIcon />}>
                     Generate
                 </Button>
             </TwoRowContainer>
